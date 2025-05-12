@@ -1,3 +1,4 @@
+export const runtime = "edge";
 import { NextResponse } from "next/server";
 import { getPRDiff } from "@/lib/github";
 import { analyzeDiff } from "@/lib/reviewer";
