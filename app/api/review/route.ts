@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const [owner, repo, pull_number] = match;
+  const [, owner, repo, pull_number] = match;
 
   try {
     const diff = await getPRDiff(owner, repo, parseInt(pull_number));

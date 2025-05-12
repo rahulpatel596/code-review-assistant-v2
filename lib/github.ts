@@ -1,20 +1,21 @@
-import { Octokit } from "@octokit/rest";
-
-const octokit = new Octokit();
-
 export async function getPRDiff(
   owner: string,
   repo: string,
   pull_number: number
 ): Promise<string> {
-  const response = await octokit.request(
-    `GET /repos/${owner}/${repo}/pulls/${pull_number}`,
+  const response = await fetch(
+    `https://api.github.com/repos/${owner}/${repo}/pulls/${pull_number}`,
     {
-      owner,
-      repo,
-      pull_number,
-      headers: { accept: "application/vnd.github.v3.diff" },
+      headers: {
+        Accept: "application/vnd.github.v3.diff",
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      },
     }
   );
-  return response.data as string;
+
+  if (!response.ok) {
+    throw new Error(`GitHub API request failed: ${response.statusText}`);
+  }
+
+  return await response.text();
 }
