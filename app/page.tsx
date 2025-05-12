@@ -48,12 +48,11 @@ export default function Home() {
           {loading ? "Analyzing..." : "Review PR"}
         </Button>
       </form>
-      <div className="bg-gray-100 p-8 w-full rounded-lg shadow-md">
-        {review && (
-          // <pre className="bg-gray-100 p-4 whitespace-pre-wrap">{review}</pre>
+      {review && (
+        <div className="bg-gray-100 p-8 w-full rounded-lg shadow-md">
           <Markdown>{review}</Markdown>
-        )}
-      </div>
+        </div>
+      )}
     </main>
   );
 }
