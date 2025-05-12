@@ -8,7 +8,7 @@ const anthropic = new Anthropic({
 });
 
 // Type guard to check if content block is a text block
-function isTextBlock(block: any): block is { type: "text"; text: string } {
+function isTextBlock(block): block is { type: "text"; text: string } {
   return block.type === "text" && typeof block.text === "string";
 }
 
