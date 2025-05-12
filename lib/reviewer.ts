@@ -22,7 +22,7 @@ ${diff}
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model: "claude-3-sonnet-20240229",
+      model: "claude-3-7-sonnet-20250219",
       max_tokens: 2048,
       temperature: 0.3,
       messages: [
@@ -36,9 +36,9 @@ ${diff}
 
   const result = await response.json();
 
-  const textBlocks = result.content.filter(
+  const textBlocks = result?.content?.filter(
     (block) => block.type === "text" && typeof block.text === "string"
   );
 
-  return textBlocks.map((b) => b.text).join("\n") || "No review returned.";
+  return textBlocks?.map((b) => b.text).join("\n") || "No review returned.";
 }
