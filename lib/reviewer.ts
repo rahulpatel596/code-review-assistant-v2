@@ -3,6 +3,8 @@ export async function analyzeDiff(diff: string): Promise<string> {
 You are a senior software engineer. You are reviewing the following GitHub PR diff. 
 
 Provide a structured code review report:
+- Add a separator line before each section, and use clear section headers
+- Give general feedback and summary first
 - Group feedback by file
 - Mention line numbers
 - Highlight bugs, optimization opportunities, readability issues, or missing best practices
